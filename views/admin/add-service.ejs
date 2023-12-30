@@ -1,0 +1,47 @@
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Form elements</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> Form elements </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Add a Service</h4>
+                    <p style="color: red;"><%= error %></p>
+                    <form method="post" action="/dashboard/add-service" enctype="multipart/form-data" class="forms-sample">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Name of Service</label>
+                            <input type="text" class="form-control" name="name" id="exampleInputUsername1" placeholder="Service Name" value="<%= name  %>" required/>
+                        </div> 
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Description / bio</label>
+                            <input type="text" class="form-control" name="bio" id="exampleInputEmail1" placeholder="description" value="<%= bio  %>"  required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Image</label>
+                            <input type="file" name="file"  class="form-control" id="exampleInputEmail1" placeholder="Image for each service"  required/>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2"> Submit </button>
+                        <a class="btn btn-light" href="/dashboard/admin">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card" style="background-image: url(../../images/about.jpg);">
+                <div class="card-body">
+                </div>
+            </div>
+            <!-- <div class="info-wrap w-100 p-5 img" style="background-image: url(images/gallery-1.jpg);">
+            </div> -->
+        </div>
+    </div>
+</div>

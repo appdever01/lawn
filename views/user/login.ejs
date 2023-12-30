@@ -1,0 +1,43 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Login</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Login <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="row no-gutters">
+                        <div class="col-md-7 p-5">
+                            <h3 class="mb-4">Login into Your Account</h3>
+                            <p style="color: red;"><%= error %></p>
+                            <div id="form-message-warning" class="mb-4"></div>
+                            <form method="POST" action="/login" id="contactForm" name="contactForm" class="contactForm">
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control" required>
+                                </div>
+                                <p>Don't have an account? <a href="/register">Sign Up</a></p>
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn btn-primary">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

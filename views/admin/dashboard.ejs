@@ -1,0 +1,210 @@
+
+
+<div class="content-wrapper pb-0">
+    <div class="page-header flex-wrap">
+      <div class="header-left">
+       <p style="color: green" ><%= success %></p>
+       <p style="color: red" ><%= error %></p>
+
+      </div>
+      <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
+        <div class="d-flex align-items-center">
+          <a href="#">
+            <p class="m-0 pe-3">Dashboard</p>
+          </a>
+          <!-- <a class="ps-3 me-4" href="#">
+            <p class="m-0">ADE-00234</p>
+          </a> -->
+        </div>
+        <!-- <a type="button" href="/dashboard/add-service" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
+          <i class="mdi mdi-plus-circle"></i> Add Service </a> -->
+      </div>
+    </div>
+    <!-- first row starts here -->
+   
+    <!-- table row starts here -->
+    <div class="row">
+      <div class="col-xl-4 grid-margin">
+        <div class="card card-stat stretch-card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div class="text-white">
+                <h3 class="font-weight-bold mb-0">$168</h3>
+                <h6>Total Profit generated</h6>
+              </div>
+              <div class="flot-bar-wrapper">
+                <div id="column-chart" class="flot-chart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card stretch-card mb-3">
+          <div class="card-body d-flex flex-wrap justify-content-between">
+            <div>
+              <h4 class="font-weight-semibold mb-1 text-black">Customers </h4>
+              <h6 class="text-muted">Total No of Customers</h6>
+            </div>
+            <h3 class="text-success font-weight-bold"><%= no_customers %> Customers</h3>
+          </div>
+        </div>
+        <div class="card stretch-card mb-3">
+          <div class="card-body d-flex flex-wrap justify-content-between">
+            <div>
+              <h4 class="font-weight-semibold mb-1 text-black">Membership Program</h4>
+              <h6 class="text-muted">Grassroot Platinum Membership</h6>
+            </div>
+            <h3 class="text-success font-weight-bold"><%= no_members %> Members</h3>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-body d-flex flex-wrap justify-content-between">
+            <div>
+              <h4 class="font-weight-semibold mb-1 text-black"> Quotes Received </h4>
+              <h6 class="text-muted">Total amount of services required</h6>
+            </div>
+            <h3 class="text-success font-weight-bold"><%= quote_no %> Quote(s)</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8 stretch-card grid-margin">
+        <div class="card">
+          <div class="card-body pb-0">
+            <h4 class="card-title">Customer's Info</h4>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive" style="height: 450px;">
+              <% if (allUsers.length > 0) { %>
+              <table class="table custom-table text-dark">
+                <thead>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Membership Status</th>
+                    <th>Loyalty Points</th>
+                    <th>Legacy Discount</th>
+                    <th>Home Address</th>
+                </thead>
+                <tbody>
+                                    
+                    <% allUsers.forEach(user => { %>
+                                      
+                      <tr>
+                        <td>
+                          <%= user.fullname %>
+                        </td>
+                        <td>
+                          <%= user.email %>
+                        </td>
+                        <td><%= user.phone_number %></td>
+                        <td><%= user.gp_membership %></td>
+                        <td><%= user.loyalty_points %></td>
+                        <td>$<%= user.legacy_discount %></td>
+                        <td><%= user.address %></td>
+                        <td>
+                          <button class="loyalty-btn">Edit Loyalty</button>
+                        </td>
+                      </tr>
+                      <% }) %>
+                </tbody>
+              </table>
+              <% } else { %>
+                <div class="card-body pb-0">
+                <h5>No Customers Yet</h5>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12 stretch-card grid-margin">
+        <div class="card">
+          <div class="card-body pb-0">
+            <h4 class="card-title">Customer service selection (Quotes)</h4>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive" style="height: 450px;">
+              <% if (selected_services.length > 0) { %>
+               
+              <table class="table custom-table text-dark">
+                <thead>
+                  <tr>
+                    <th>Quote ID</th>
+                    <th>Service</th>
+                    <th>Customer</th>
+                    <th>Customer Email</th>
+                    <th>Customer Phone</th>
+                    <th>Customer Address</th>
+                    <th>Price</th>
+                    <th>Payment Status</th>
+                    <th>Customer's Rating</th>
+                    <th>Picked Date</th>
+                    
+                </thead>
+                <tbody>
+                                    
+                    <% selected_services.forEach(service => { %>
+                                      
+                      <tr>
+                        <td>#<%= service.id %></td>
+                        <td>
+                          <%= service.service %>
+                        </td>
+                        <td>
+                          <%= service.customer %>
+                        </td>
+                        <td><%= service.customer_email %></td>
+                        <td><%= service.customer_phone %></td>
+                        <td><%= service.customer_address %></td>
+                        <td>
+                         <% if (service.price == 0) { %>
+                          <a href="/dashboard/set-price/<%= service._id %>">Set</a>
+                         <% } else {%>
+                           $<%= service.price %>
+                        <% } %>
+                          
+                        </td>                        
+                        <td>
+                          <% if (service.paid == true) { %>
+                            <a style="color: green;">Paid</q>
+                            <% } else {%>
+                              <a style="color: rgb(124, 124, 13);">Pending</a>
+                            <% } %>
+                        </td>
+                       
+                        <td>
+                          <div class="d-flex">
+                            <span class="pe-2 d-flex align-items-center">85%</span>
+                            <select id="star-1" name="rating" autocomplete="off">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                            </select>
+                          </div>
+                          <!-- check reviews -->
+                        </td>
+                        <td><%= service.date_of_service %></td>
+                        <td>
+                          <button class="loyalty-btn">Cancel</button>
+                        </td>
+                      </tr>
+                      <% }) %>
+                </tbody>
+              </table>
+              <% } else {%>
+                <div class="card-body pb-0">
+                  <h5>No Quotes Found</h5>
+                  </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>

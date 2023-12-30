@@ -1,0 +1,40 @@
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Set Price</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard/admin">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Set Price </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Set a Price for <%= selected_service.service %> service to <%= selected_service.customer %>. QUOTE_ID: <%= selected_service.id %></h4>
+                    <p style="color: red;"><%= error %></p>
+                    <form method="post" action="/dashboard/set-price/<%= selected_service._id %>" class="forms-sample">
+                        <div class="form-group">
+                            <label for="exampleInputUsername1">Price</label>
+                            <input type="number" class="form-control" name="price" id="exampleInputUsername1" placeholder="Price" value="<%= price  %>" required/>
+                        </div> 
+                       
+                        <button type="submit" class="btn btn-primary me-2"> Submit </button>
+                        <a class="btn btn-light" href="/dashboard/admin">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card" style="background-image: url(../../images/about.jpg);">
+                <div class="card-body">
+                </div>
+            </div>
+            <!-- <div class="info-wrap w-100 p-5 img" style="background-image: url(images/gallery-1.jpg);">
+            </div> -->
+        </div>
+    </div>
+</div>

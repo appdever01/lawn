@@ -1,0 +1,23 @@
+const express = require('express')
+const router = express.Router()
+
+const {authMiddleware, authAdmin, notAdmin} = require('../middleware/authentication.js')
+
+
+const {
+    home, membership, contact, services, get_quote_page, get_quote
+} = require('../controllers/main')
+
+router.get('/', home)
+router.get('/membership', membership)
+router.get('/contact', contact)
+router.get('/services', services)
+router.get('/get-a-quote', authMiddleware, notAdmin, get_quote_page)
+router.post('/get-a-quote',authMiddleware, notAdmin, get_quote)
+
+
+
+
+
+
+module.exports = router

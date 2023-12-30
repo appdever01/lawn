@@ -1,0 +1,95 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Quote</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>Get A Quote <i
+                            class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="row no-gutters">
+                        <div class="col-md-7">
+                            <div class="contact-wrap w-100 p-md-5 p-4">
+                                <h3 class="mb-4">Get A Quote</h3>
+                                <div id="form-message-warning" class="mb-4"></div>
+                                <div id="form-message-success" class="mb-4">
+                                    Fill in the contact details you want us to reach back to you at.
+                                </div>
+                                <form method="POST" action="/get-a-quote" id="contactForm" name="contactForm" class="contactForm">
+                                    <div class="row">                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="email">Email Address</label>
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                    placeholder="Email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Phone number</label>
+                                                <input type="number" class="form-control" name="number" id="number"
+                                                    placeholder="Enter your Phone number" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Address (Where you want us to work on)</label>
+                                                <input type="text" class="form-control" name="address" id="address"
+                                                    placeholder="Enter the location Address" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Schedule a Date</label>
+                                                <input type="date" class="form-control" name="date" id="subject"
+                                                    placeholder="Subject" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="#">Type of Service</label>
+                                                <select name="service" class="form-control" required>
+                                                    <option>Mowing</option>
+                                                    <optio>Bush trimming</optio>
+                                                    <option>Landscape bed cleanups</option>    
+                                                    <option>Soil Tests</option>   
+                                                    <option>Aeration & Overseeding</option>                             
+                                                    <option>Mulching</option>                             
+
+                                                    <!-- <% services.forEach(service => { %>
+                                                    <option><%= service.service %></option>
+                                                    <% }) %> -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Get Quote" class="btn btn-primary">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-5 d-flex align-items-stretch">
+                            <div class="info-wrap w-100 p-5 img" style="background-image: url(../../images/gallery-1.jpg);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

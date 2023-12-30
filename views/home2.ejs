@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Responsive Layout</title>
+  <style>
+    /* Add your custom styles here if needed */
+    
+
+    .col-3 {
+      background-color: green;
+    }
+    .col-6 {
+      background-color: yellow;
+    }
+    /* .custom-div {
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    } */
+
+    /* .largest-row { */
+      /* height: 70%; The largest row takes 50% of the div's height */
+    /* } */
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <section class="custom-section" style=" background-color: red;">
+    <div class="row" style="background-color: purple;">
+      <div class="col-3"  >
+          <div class="row  text-white largest-row" style="background-color: wheat; height: 50%;">
+            <div class="col">Largest Row 1</div>
+          </div>
+          <div class="row remaining-rows" style="background-color: violet;  height: 25%;">
+            <div class="col">Remaining Row 1</div>
+          </div>
+          <div class="row remaining-rows" style="background-color: gray;  height: 25%;">
+            <div class="col">Remaining Row 2</div>
+          </div>
+      </div>
+      <div class="col-6">
+        <div class="custom-div">
+          <div class="row bg-primary text-white largest-row">
+            <div class="col">Largest Row 2</div>
+          </div>
+          <div class="row remaining-rows">
+            <div class="col">Remaining Row 1</div>
+          </div>
+          <div class="row remaining-rows">
+            <div class="col">Remaining Row 2</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="custom-div">
+          <div class="row bg-primary text-white largest-row">
+            <div class="col">Largest Row 3</div>
+          </div>
+          <div class="row remaining-rows">
+            <div class="col">Remaining Row 1</div>
+          </div>
+          <div class="row remaining-rows">
+            <div class="col">Remaining Row 2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
