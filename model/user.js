@@ -26,10 +26,6 @@ const UserSchema = new Schema({
   phone_number:{
     type: String,
     required: [true, 'Please provide phone number'],
-    match: [
-        /^\+?\d{1,4}\d{10}$/,
-        'Please Provide valid Phone Number (Phone number must be in form +4491222... or 091222...)'
-    ],
     unique: true,
   },
   address:{
@@ -48,6 +44,9 @@ const UserSchema = new Schema({
   gp_membership:{
     type: Boolean,
     default: false
+  },
+  gp_receipt_url: {
+    type: String
   },
   loyalty_points:{
     type: Number,

@@ -1,0 +1,111 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Get An Estimate</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>Instant Estimate<i
+                            class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div  class="wrapper">
+                    <h4 id="est" style="color: red"><%= error %></h4>
+
+                    <div class="row no-gutters">
+                        <div class="col-md-7">
+                            <div class="contact-wrap w-100 p-md-5 p-4">
+                                <h3 class="mb-4">Get An Instant Estimate</h3>
+                                <div id="form-message-warning" class="mb-4"></div>
+                                <div id="form-message-success" class="mb-4">
+                                    Get an estimate of the price for mowing your lawn in seconds. Just input your House details.
+                                </div>
+                                <form method="POST" action="/instant-estimate" id="contactForm" name="contactForm" class="contactForm">
+                                    <div class="row">                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Address (Where you want us to work on)</label>
+                                                <input type="text" class="form-control" name="address" id="address"
+                                                    placeholder="Enter the Address formatted correctly (e.g 123 Main St, Arlington VA 22205)" required>
+                                            </div>
+                                        </div>
+                                 
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Get Estimate" class="btn btn-primary">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+                                <br>
+                                <div id="form-message-success" class="mb-4">
+                                    Having trouble formatting your house address right? Or problem with getting an estimate with the form above. Fill the below form.
+                                </div>
+                                <form method="POST" action="/instant-estimate" id="contactForm" name="contactForm" class="contactForm">
+                                    <div class="row">                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="email">House Number</label>
+                                                <input type="text" class="form-control" name="house" id="email"
+                                                    placeholder="Enter your House Number" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">Street</label>
+                                                <input type="text" class="form-control" name="street" id="number"
+                                                    placeholder="Enter your Street name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">City</label>
+                                                <input type="text" class="form-control" name="city" id="number"
+                                                    placeholder="Enter the name of the City it is located" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">state</label>
+                                                <input type="text" class="form-control" name="state" id="number"
+                                                    placeholder="NY for New York" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="label" for="subject">zip</label>
+                                                <input type="text" class="form-control" name="zip" id="number"
+                                                    placeholder="Enter your Zip code" required>
+                                            </div>
+                                        </div>
+                                 
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Get Estimate" class="btn btn-primary">
+                                                <div class="submitting"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-5 d-flex align-items-stretch">
+                            <div class="info-wrap w-100 p-5 img" style="background-image: url(../../images/gallery-1.jpg);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

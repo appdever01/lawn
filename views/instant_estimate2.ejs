@@ -1,0 +1,54 @@
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Estimate Ready</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>Instant Estimate<i
+                            class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="wrapper">
+                    <div class="row no-gutters">
+                        <div class="col-md-9">
+                            <div class="contact-wrap w-100 p-md-5 p-4">
+                                <% if (error_) { %>
+                                <h3 class="mb-4">We were not able to do an Estimate. Check your inputs and try again or contact admin</h3>
+                                 
+                                <% } else {%>
+                                <h3 class="mb-4">Your Estimate is Ready</h3>
+                                <% } %>
+                                <div id="form-message-warning" class="mb-4"></div>
+                                <% if (error_) { %>
+                                    <div id="form-message-success" class="mb-4">
+                                        ERROR: <%= error_ %>
+                                    </div>
+                                <% } else { %>
+                                <div id="form-message-success" class="mb-4">
+                                    Price: $<%= price %>
+                                </div>
+                                <div id="form-message-success" class="mb-4">
+                                    Lot size Found (sqrft): <%= lotsize %>
+                                </div>
+                                <div id="form-message-success" class="mb-4">
+                                    Thank you for using our Estimate. Accept and Continue to send in a quote for our lawn mowing service to you.
+                                </div>
+                                <a href="/get-a-quote" class="btn btn-primary">Accept and Continue</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

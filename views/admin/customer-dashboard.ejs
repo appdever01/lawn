@@ -1,4 +1,14 @@
 
+<html>
+  <head>
+    <style>
+      th, td {
+        white-space: nowrap;
+        
+      }
+    </style>
+  </head>
+</html>
 
 <div class="content-wrapper pb-0">
     <div class="page-header flex-wrap">
@@ -45,9 +55,9 @@
             </div>
             <h3 class="text-success font-weight-bold">
               <% if (user.gp_membership == true) { %>
-                Joined
+                <a href="<%= user.gp_receipt_url %>" style="text-decoration: none;">Joined</a> 
               <% } else {%>
-                Not Joined
+                <a href="/membership" class="btn btn-primary mb-2 mb-md-0 me-2"> Join Now </a>
               <% } %>
               </h3>
           </div>
@@ -76,7 +86,7 @@
             <h4 class="card-title"><%= user.fullname %>'s Info</h4>
           </div>
           <div class="card-body p-0">
-            <div class="table-responsive" style="height: 450px;">
+            <div class="table-responsive"  style="height: 450px; ">
               <table class="table custom-table text-dark">
                 <thead>
                   <tr>
@@ -106,7 +116,7 @@
                   <th>Home Address</th>
                 </thead>
                 <tbody>
-                  <td><%= user.address %></td>
+                  <td style="white-space: nowrap;"><%= user.address %></td>
                 </tbody>
               </table>
             </div>
@@ -130,10 +140,6 @@
                   <tr>
                     <th>Quote ID</th>
                     <th>Service</th>
-                    <th>Customer</th>
-                    <th>Customer Email</th>
-                    <th>Customer Phone</th>
-                    <th>Customer Address</th>
                     <th>Price</th>
                     <th>Payment Status</th>
                     <th>Customer's Rating</th>
@@ -152,12 +158,6 @@
                           <%= service.service %>
                         </td>
                         <td>
-                          <%= service.customer %>
-                        </td>
-                        <td><%= service.customer_email %></td>
-                        <td><%= service.customer_phone %></td>
-                        <td><%= service.customer_address %></td>
-                        <td>
                           <% if (service.price == 0) { %>
                            <a>Awaiting</a>
                           <% } else {%>
@@ -169,7 +169,7 @@
                            <% if (service.paid == true) { %>
                              <a style="color: green;">Paid</q>
                              <% } else {%>
-                               <a style="color: rgb(124, 124, 13);">Pending</a>
+                              <a href="/payment/<%= service.id %>" class="btn btn-primary mb-2 mb-md-0 me-2"> Pay </a>
                              <% } %>
                          </td>
                        
@@ -187,7 +187,9 @@
                           <!-- check reviews -->
                         </td>
                         <td><%= service.date_of_service %></td>
-                       
+                        <% if (service.paid == true) { %>
+                          <td><a href="<%= service.receipt_url %>" class="btn btn-primary mb-2 mb-md-0 me-2"> Receipt </a></td>
+                        <% } %>
                       </tr>
                       <% }) %>
                 </tbody>

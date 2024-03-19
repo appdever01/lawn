@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en" id="content">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <style>
+        /* Styles for the form container (adjust as needed) */
+        .form-container {
+            max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  /* Styles for the card element container */
+  .card-element-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  /* Styles for the input fields */
+  .form-input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #000000;
+    border-radius: 4px;
+  }
+
+
+  /* Style the button */
+  .form-button {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+        }
+      </style>
+      
+    <script>
+        var stripePublickey = '<%= stripePublickey%>'
+    </script>
+
+</head>
+
+
+
+
+<body>
+
+
+        <section class="hero-wrap hero-wrap-2" style="background-image: url('../../images/bg_2.jpg');"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <h1 class="mb-3 bread">Make Payment Here</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i
+                                    class="ion-ios-arrow-forward"></i></a></span> <span>Payment Page <i
+                                class="ion-ios-arrow-forward"></i></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+                        <div class="row mb-5">
+                           
+                            <div class="col-md-4">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-phone"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dbox w-100 text-center">
+                                    <div class="text">
+                                       Having problem making payments? Contact us.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-paper-plane"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row no-gutters">
+                            <% if (paid != true) { %>
+                            <div class="col-md-7">
+                                <h4 style="color: red;"><% if (error) { %> ERROR:<% } %> <%= error %></h4>
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                    <h3 class="mb-4">Proceed to Pay</h3>
+                                    <div id="form-message-warning" class="mb-4"></div>
+                                    <div id="form-message-success" class="mb-4">
+                                        Fill in the neccessary details correctly. Check to see if the inputs are correct
+                                    </div>
+                                    <form action="/charge/<% if (id=='MeM234' ) { %>MeM234<% } else {%><%= quote.id %><% } %>" method="POST" id="payment-form" name="contactForm" class="contactForm">
+                                        <div style="margin-bottom: 40px;" class="form-input">
+                                            <label  style="margin-bottom: 20px;" for="card-element">Card Details:</label>
+                                            <% if (id == "MeM234") { %>
+                                                <input style="margin-bottom: 20px;" type="text" id="name-input" class="form-input" name="purpose" placeholder="Purpose of Payment" value="Payment for Grassroots Platinum Membership"  disabled required>                                          
+                                            <% } else { %>
+                                            <input style="margin-bottom: 20px;" type="text" id="name-input" class="form-input" name="purpose" placeholder="Purpose of Payment" value="Payment for <%= quote.service %> service (ID: #<%= quote.id %> )"  disabled required>
+                                            <% } %>
+                                            <input style="margin-bottom: 20px;" type="text" id="name-input" class="form-input" name="name" placeholder="Enter your Full Name" value="<%= user.fullname %>" required>
+                                            <input style="margin-bottom: 20px;" type="email" id="email-input" class="form-input" name="email" placeholder="Enter your Email" value="<%= user.email %>"required>
+                                            <input style="margin-bottom: 20px;" type="number" id="email-input" class="form-input" name="phone" placeholder="Enter your Phone Number" value="<%= user.phone_number %>" required>
+
+
+                                            <div   style="margin-bottom: 20px;"id="card-element" class="form-input">
+                                            <!-- Card Element will be inserted here -->
+                                            </div>
+                                          </div>
+                                        <div class="row">
+                                            
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="submit" value="Pay Now" class="btn btn-primary">
+                                                    <div class="submitting"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <% } else { %>
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                   <h3>Payment Made</h3>
+                                    <div id="form-message-success" class="mb-4">
+                                        <% if (id == "MeM234") { %>
+                                        You have made a payment for the Grassroots Platinum Membership                                          
+                                        <% } else { %>
+                                        You have made a payment for the <%= quote.service %> service (ID: #<%= quote.id %>)
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+
+                            <div class="col-md-5 d-flex align-items-stretch">
+                                <div class="info-wrap w-100 p-5 img" style="background-image: url(../../images/about.jpg);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+ 
+
+
+    </div>
+</main>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="../../charge.js"></script>
+
+
+</body>
+
+

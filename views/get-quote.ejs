@@ -32,20 +32,20 @@
                                             <div class="form-group">
                                                 <label class="label" for="email">Email Address</label>
                                                 <input type="email" class="form-control" name="email" id="email"
-                                                    placeholder="Email" required>
+                                                    placeholder="Email" value="<%= user.email %>" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="label" for="subject">Phone number</label>
                                                 <input type="number" class="form-control" name="number" id="number"
-                                                    placeholder="Enter your Phone number" required>
+                                                    placeholder="Enter your Phone number" value="<%= user.phone_number %>" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="label" for="subject">Address (Where you want us to work on)</label>
-                                                <input type="text" class="form-control" name="address" id="address"
+                                                <input type="text" class="form-control" name="address" id="address" value="<%= address %>"
                                                     placeholder="Enter the location Address" required>
                                             </div>
                                         </div>
