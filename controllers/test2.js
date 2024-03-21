@@ -10,7 +10,7 @@ const { instant_estimate } = require('./api')
 const axios = require('axios');
 const selected_services = require('../model/selected_services')
 
-const domain = "https://lawn-production.up.railway.app"
+const domain = "http://127.0.0.1:3000"
 
 const stripeSecretkey = process.env.STRIPE_SECRET_KEY
 const stripePublickey = process.env.STRIPE_PUBLIC_KEY
@@ -192,13 +192,12 @@ const instantEstimate = async (req, res) => {
     })
 } 
 
-const postInstantEstimate = async (req, res) => {
 
-    const {is_user, is_admin } = await CheckAuth(req, res)
+const url = `${domain}/api/instant_estimate`;
+
+const getestimate = async (req) => {
 
     const {house, street, city, state, zip, address } = req.body
-
-    const url = `${domain}/api/instant_estimate`;
 
     let price, lotsize, error_
     try {
@@ -219,22 +218,47 @@ const postInstantEstimate = async (req, res) => {
           if(response.data.statusCode == '404'){
             error_ = response.data.statusmessage
           }
-         
     } catch (error) {
         console.log(error)
+        return null
     }
-    
-    req.session.formData = {price, address};
 
-    if( !lotsize && !error_){
-        return res.redirect('/instant-estimate?error=Check your Internet connection#est')
+    return {lotsize: lotsize, price: price, error_: error_} 
+}
+
+const postInstantEstimate = async (req, res) => {
+
+    const {is_user, is_admin } = await CheckAuth(req, res)
+
+    const {house, street, city, state, zip, address } = req.body
+
+    let price2, lotsize2, error_2
+    const {lotsize, price, error_ } = await getestimate(req)
+    price2 = price
+    lotsize2 = lotsize
+    error_2 = error_
+
+
+    let trial = 0
+    while(!lotsize2 && !error_2){
+        const {lotsize, price, error_ } = await getestimate(req)
+        lotsize2 = lotsize
+        error_2 = error_
+        trial = trial + 1
+        console.log("trial- ", trial)
+        if(trial >= 5y){
+            return res.redirect('/instant-estimate?error=Check your Internet connection#est')
+        }
+        
     }
      
     
+    req.session.formData = {price, address};
+
     res.render('instant_estimate2', {
         title: "Instant Estimate",
         layout: mainLayout,
-        is_user, is_admin, price, lotsize, error_
+        is_user, is_admin, price2, lotsize2, error_2
     })
 }
 
