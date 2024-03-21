@@ -5,6 +5,6 @@ const {
     instant_estimate
 } = require('../controllers/api')
 
-router.get('/instant_estimate', instant_estimate)
+router.post('/instant_estimate', instant_estimate)
 
 module.exports = router

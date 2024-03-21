@@ -1,0 +1,63 @@
+Lawn code
+
+
+# Import necessary libraries
+import requests  # For making API requests
+
+# Function to get estimated lawn size using a property data API
+def get_estimated_lawn_size(address):
+  # Replace with your API key and endpoint URL
+  api_key = "YOUR_API_KEY"
+  url = f"https://api.example.com/property?address={address}&key={api_key}"
+
+  # Make an API request and handle potential errors
+  try:
+    response = requests.get(url)
+    response.raise_for_status()  # Raise an error if API call fails
+    data = response.json()
+    
+    # Extract estimated lot size or relevant property data from the response
+    estimated_size = data.get("lot_size", None)  # Replace with the appropriate key
+
+    return estimated_size
+  except requests.exceptions.RequestException as e:
+    print(f"Error retrieving data: {e}")
+    return None
+
+# Function to calculate estimated price based on size and service type
+def estimate_price(size, service_type):
+  # Define base price and price per unit area for each service
+  service_rates = {
+      "mowing": {
+          "base_price": 20,
+          "price_per_unit": 0.05,
+      },
+      "fertilization": {
+          "base_price": 50,
+          "price_per_unit": 0.10,
+      },
+  }
+
+  # Validate service type
+  if service_type not in service_rates:
+      return "Invalid service type."
+
+  # Calculate estimated price based on service type and size
+  estimated_price = service_rates[service_type]["base_price"] + size * service_rates[service_type]["price_per_unit"]
+
+  return f"The estimated price for {service_type} is ${estimated_price:.2f}."
+
+# Example usage
+address = input("Enter your address: ")
+service_type = input("Enter the service type (mowing or fertilization): ")
+
+# Get estimated lawn size
+estimated_size = get_estimated_lawn_size(address)
+
+# Check if size retrieval was successful
+if estimated_size is None:
+  print("Unable to estimate lawn size. Please try again later.")
+else:
+  # Calculate and print the estimated price
+  estimate = estimate_price(estimated_size, service_type)
+  print(estimate)

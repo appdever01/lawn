@@ -55,6 +55,9 @@ const SelectedServicesSchema = new mongoose.Schema({
         type:Boolean,
         default: false
     },
+    receipt_url: {
+        type: String
+      },
     date_of_service: {
         type: mongoose.Schema.Types.Mixed,
         required: [true, 'Please provide a scheduled date'],
